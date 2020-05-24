@@ -1,0 +1,2 @@
+DROP DATABASE IF EXISTS crud_knex;
+CREATE DATABASE crud_knex;

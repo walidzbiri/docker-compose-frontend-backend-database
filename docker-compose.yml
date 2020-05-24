@@ -1,0 +1,25 @@
+version: "3"
+
+services:
+    database:
+        build: ./database
+        image: mysql_for_crud_knex:1.0
+        volumes: 
+            - database_data:/var/lib/mysql
+    backend:
+        build: ./backend
+        image: crud_knex:1.0
+        depends_on:
+            - database
+        ports: 
+            - 3000:3000
+    frontend:
+        build: ./frontend
+        image: frontend_knex:1.0
+        depends_on:
+            - database
+            - backend
+        ports: 
+            - 5500:80
+volumes: 
+    database_data:
